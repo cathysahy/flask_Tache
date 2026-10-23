@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titre %}Détail de la tâche{% endblock %}
+{% block contenu %}
+<h2>Détail de la tâche n° {{ tache.id }}</h2>
+<dl>
+    <dt>Titre</dt><dd>{{ tache.titre }}</dd>
+    <dt>Priorité</dt><dd>{{ tache.priorite|capitalize }}</dd>
+    <dt>État</dt><dd>{% if tache.terminee %}Terminée{% else %}À faire{% endif %}</dd>
+</dl>
+<a href="{{ url_for('index') }}">Retour à la liste</a>
+{% endblock %}

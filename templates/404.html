@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block titre %}Page introuvable — 404{% endblock %}
+{% block contenu %}
+<h2>Erreur 404 — Page introuvable</h2>
+<p>La page ou la tâche demandée n'existe pas.</p>
+<a href="{{ url_for('index') }}">Retour à l'accueil</a>
+{% endblock %}

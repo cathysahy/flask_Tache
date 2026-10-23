@@ -1,0 +1,28 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: sans-serif; color: #222; background: #f4f6f8; line-height: 1.5; }
+.entete { padding: 1rem 8%; background: #173b57; color: white; }
+.entete h1 { margin: 0 0 .5rem; }
+nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+nav a { color: white; }
+.conteneur { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background: white; border-radius: 10px; }
+footer { text-align: center; color: #666; padding: 1rem; }
+a { color: #145b8c; }
+.liste-taches { padding: 0; list-style: none; }
+.liste-taches li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #ddd; }
+.actions, .filtres { display: flex; flex-wrap: wrap; gap: .5rem; }
+button, .filtres a { border: 0; padding: .55rem .8rem; border-radius: 5px; background: #176b45; color: white; cursor: pointer; text-decoration: none; }
+button.danger { background: #a52828; }
+.filtres { margin: 1rem 0; }
+.filtres a { background: #6c757d; }
+.filtres a.actif { background: #173b57; }
+.badge { display: inline-block; margin-left: .4rem; padding: .15rem .4rem; border-radius: 4px; font-size: .75rem; background: #e6e6e6; }
+.badge.haute { background: #ffd9d9; }
+.badge.normale { background: #fff0c2; }
+.badge.basse { background: #d9f4df; }
+.numero { color: #777; }
+.formulaire { display: grid; gap: .6rem; max-width: 500px; }
+input, select { padding: .7rem; border: 1px solid #aaa; border-radius: 5px; font: inherit; }
+.formulaire button { margin-top: .5rem; }
+.flash { padding: .8rem; border-radius: 5px; background: #e2f5e8; }
+.erreurs { padding: .8rem; background: #ffe1e1; border-radius: 5px; }
+@media (max-width: 650px) { .liste-taches li { align-items: flex-start; flex-direction: column; } .conteneur { margin: 1rem; padding: 1rem; } }

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titre %}Mes tâches{% endblock %}
+{% block contenu %}
+<h2>Mes tâches</h2>
+<p>Nombre de tâches restantes : <strong>{{ restantes }}</strong></p>
+
+<div class="filtres">
+    <a class="{% if filtre == 'toutes' %}actif{% endif %}" href="{{ url_for('index', filtre='toutes') }}">Toutes</a>
+    <a class="{% if filtre == 'actives' %}actif{% endif %}" href="{{ url_for('index', filtre='actives') }}">Actives</a>
+    <a class="{% if filtre == 'terminees' %}actif{% endif %}" href="{{ url_for('index', filtre='terminees') }}">Terminées</a>
+</div>
+
+{% if taches %}
+<ul class="liste-taches">
+    {% for t in taches %}
+    <li>
+        <div>
+            <span class="numero">{{ loop.index }}.</span>
+            {% if t.terminee %}
+                <s>{{ t.titre }}</s>
+            {% else %}
+                <a href="{{ url_for('detail_tache', id=t.id) }}">{{ t.titre }}</a>
+            {% endif %}
+            <span class="badge {{ t.priorite }}">{{ t.priorite|upper }}</span>
+        </div>
+        <div class="actions">
+            {% if not t.terminee %}
+            <form method="post" action="{{ url_for('terminer', id=t.id) }}">
+                <button type="submit">Terminer</button>
+            </form>
+            {% endif %}
+            <form method="post" action="{{ url_for('supprimer', id=t.id) }}"
+                  onsubmit="return confirm('Supprimer cette tâche ?');">
+                <button class="danger" type="submit">Supprimer</button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Aucune tâche dans cette catégorie.</p>
+{% endif %}
+{% endblock %}

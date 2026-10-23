@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titre %}Ajouter une tâche{% endblock %}
+{% block contenu %}
+<h2>Nouvelle tâche</h2>
+
+{% if erreurs %}
+<div class="erreurs">
+    <p>Veuillez corriger les problèmes suivants :</p>
+    <ul>{% for erreur in erreurs %}<li>{{ erreur }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{ url_for('ajouter') }}" class="formulaire">
+    <label for="titre">Titre (80 caractères maximum)</label>
+    <input id="titre" name="titre" maxlength="80" required
+           value="{{ titre_saisi|default('') }}" placeholder="Ex. : Réviser Flask">
+
+    <label for="priorite">Priorité</label>
+    <select id="priorite" name="priorite">
+        {% for choix in ['basse', 'normale', 'haute'] %}
+        <option value="{{ choix }}" {% if priorite_saisie|default('normale') == choix %}selected{% endif %}>
+            {{ choix|capitalize }}
+        </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Ajouter</button>
+</form>
+{% endblock %}
